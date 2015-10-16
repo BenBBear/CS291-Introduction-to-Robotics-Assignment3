@@ -1,0 +1,11 @@
+<launch>
+
+    <include file="$(find turtlebot_stage)/launch/turtlebot_in_stage.launch">
+        <arg name="map_file" value="$(find assignment_3)/maps/maze.yaml"></arg>
+        <arg name="world_file" value="$(find assignment_3)/maps/stage/maze.world"></arg>
+    </include>
+    
+    
+    <node pkg="assignment_3" name="RandomWalker" type="rw"/>
+
+</launch>
