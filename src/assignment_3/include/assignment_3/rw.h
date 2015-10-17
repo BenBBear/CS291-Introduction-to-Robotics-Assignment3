@@ -2,6 +2,7 @@
 #define CONTROLLER_HEADER_FILE
 
 #include "ros/ros.h"
+#include <sensor_msgs/LaserScan.h>
 #include "std_msgs/String.h"
 #include <ros/console.h>
 #include "geometry_msgs/Twist.h"
@@ -16,7 +17,7 @@ static float TICK = 0.1;
 #define STOP() stop(vel);
 #define LEFT(x) left(vel,x);
 #define RIGHT(x) right(vel,x);
-#define TURN_AROUND() left(vel,30);
+#define TURN_RANDOM() run(vel,3,0,rand()%6-3);
 
 
 void tick(){
@@ -60,6 +61,8 @@ void right(ros::Publisher vel,int times = 1,float a = -DEFAULT_ARG_VEL){
     run(vel,times,0.0, -abs(a));
 }
 
-
+int randomInt(int min,int max){
+    return rand()%max + min;
+}
 
 #endif /* CONTROLLER_HEADER_FILE */
