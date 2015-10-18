@@ -18,7 +18,7 @@ static float TICK = 0.1;
 #define LEFT(x) left(vel,x);
 #define RIGHT(x) right(vel,x);
 #define TURN_RANDOM() run(vel,3,0,rand()%6-3);
-
+#define TURN_LITTLE() run(vel,1,0,rand()%1-1);
 
 void tick(){
     ros::spinOnce();
@@ -64,5 +64,15 @@ void right(ros::Publisher vel,int times = 1,float a = -DEFAULT_ARG_VEL){
 int randomInt(int min,int max){
     return rand()%max + min;
 }
+
+float avg(vector<float> r){
+    int size = r.size();
+    float sum = 0;
+    for(unsigned int i = 0;i<size;i++){
+        sum+=r[i];
+    }
+    return sum/size;
+}
+
 
 #endif /* CONTROLLER_HEADER_FILE */
